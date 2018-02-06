@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CloudBankTester
+namespace CloudCoinCsharpSDK
 {
     public class ReceiptDetail
     {

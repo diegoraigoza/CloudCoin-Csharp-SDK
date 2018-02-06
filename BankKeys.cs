@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CloudBankTester
+namespace CloudCoinCsharpSDK
 {
     /*
      example json file: 

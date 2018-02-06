@@ -5,8 +5,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace CloudBankTester
+namespace CloudCoinCsharpSDK
 {
+    interface IAccessCloudBank
+    {
+        BankKeys LoadKeysFromFile(string filename);
+        CloudBankUtils cloudBankUtils { get; }
+    }
+
     class CloudBankUtils
     {
         //Fields
@@ -25,6 +31,7 @@ namespace CloudBankTester
 
 
         //Constructor
+
         public CloudBankUtils( BankKeys startKeys ) {
             keys = startKeys;
             cli = new HttpClient();
@@ -36,9 +43,10 @@ namespace CloudBankTester
             twohundredfiftiesInBank = 0;
         }//end constructor
 
+
         //Methods
         public async Task showCoins() {
-            Console.Out.WriteLine("https://" + keys.publickey + "/show_coinsk=" + keys.privatekey);
+            Console.Out.WriteLine("https://" + keys.publickey + "/show_coins?k=" + keys.privatekey);
             var formContent = new FormUrlEncodedContent(new[]{ new KeyValuePair<string, string>("pk", keys.privatekey) });
             string json = "error";
             try {
