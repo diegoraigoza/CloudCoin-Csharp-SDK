@@ -46,11 +46,11 @@ namespace CloudCoinCsharpSDK
 
         //Methods
         public async Task showCoins() {
-            Console.Out.WriteLine("https://" + keys.publickey + "/show_coins?k=" + keys.privatekey);
+            Console.Out.WriteLine("https://" + keys.publickey + "/service/show_coins?k=" + keys.privatekey);
             var formContent = new FormUrlEncodedContent(new[]{ new KeyValuePair<string, string>("pk", keys.privatekey) });
             string json = "error";
             try {
-                var showCoins = await cli.PostAsync("https://" + keys.publickey + "/show_coins", formContent);
+                var showCoins = await cli.PostAsync("https://" + keys.publickey + "/service/show_coins.aspx", formContent);
                 json = await showCoins.Content.ReadAsStringAsync();
             } catch(HttpRequestException ex)
             {
@@ -92,7 +92,7 @@ namespace CloudCoinCsharpSDK
 
             try
             {
-                var result_stack = await cli.PostAsync("https://"+toPublicURL + "/deposit_one_stack", formContent);
+                var result_stack = await cli.PostAsync("https://"+toPublicURL + "/service/deposit_one_stack.aspx", formContent);
                 CloudBankFeedback = await result_stack.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
@@ -113,8 +113,8 @@ namespace CloudCoinCsharpSDK
 
         public async Task getReceipt(string toPublicURL)
         {
-            Console.Out.WriteLine("Geting Receipt: " + "https://" + toPublicURL + "/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
-            var result_receipt = await cli.GetAsync("https://" + toPublicURL + "/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
+            Console.Out.WriteLine("Geting Receipt: " + "https://" + toPublicURL + "/service/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
+            var result_receipt = await cli.GetAsync("https://" + toPublicURL + "/service/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
            
             rawReceipt = await result_receipt.Content.ReadAsStringAsync();
             Console.Out.WriteLine("Raw Receipt: " + rawReceipt);
@@ -125,7 +125,7 @@ namespace CloudCoinCsharpSDK
             totalCoinsWithdrawn = amountToWithdraw;
             var formContent = new FormUrlEncodedContent(new[] { new KeyValuePair<string,string>("amount",amountToWithdraw.ToString()),
                 new KeyValuePair<string, string>("pk", keys.privatekey)});
-            var result_stack = await cli.PostAsync("https://" + keys.publickey + "/withdraw_account", formContent);
+            var result_stack = await cli.PostAsync("https://" + keys.publickey + "/service/withdraw_account.aspx", formContent);
                 rawStackFromWithdrawal = await result_stack.Content.ReadAsStringAsync();
                 //rawStack = GET(cloudBankURL, receiptNumber);
         }//End get stack from cloudbank
@@ -170,7 +170,7 @@ namespace CloudCoinCsharpSDK
         {
             var formContent = new FormUrlEncodedContent(new[] { new KeyValuePair<string,string>("rn",receiptNumber),
                 new KeyValuePair<string, string>("pk", keys.privatekey)});
-            var result_receipt = await cli.PostAsync("https://" + keys.publickey + "/get_receipt", formContent);
+            var result_receipt = await cli.PostAsync("https://" + keys.publickey + "/service/get_receipt.aspx", formContent);
             string rawReceipt = await result_receipt.Content.ReadAsStringAsync();
             if (rawReceipt.Contains("Error"))
             {
@@ -184,7 +184,7 @@ namespace CloudCoinCsharpSDK
                         totalCoinsWithdrawn += getDenomination(deserialReceipt.rd[i].sn);
                 var formContent2 = new FormUrlEncodedContent(new[] { new KeyValuePair<string,string>("amount",totalCoinsWithdrawn.ToString()),
                 new KeyValuePair<string, string>("pk", keys.privatekey)});
-                var result_stack = await cli.PostAsync("https://"+keys.publickey + "/withdraw_account", formContent2);
+                var result_stack = await cli.PostAsync("https://"+keys.publickey + "/service/withdraw_account.aspx", formContent2);
                 rawStackFromWithdrawal = await result_stack.Content.ReadAsStringAsync();
                 //rawStackFromWithdrawal = GET(cloudBankURL, receiptNumber);
             }
