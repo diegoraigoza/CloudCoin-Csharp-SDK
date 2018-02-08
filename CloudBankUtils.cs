@@ -7,13 +7,9 @@ using Newtonsoft.Json;
 
 namespace CloudCoinCsharpSDK
 {
-    interface IAccessCloudBank
-    {
-        BankKeys LoadKeysFromFile(string filename);
-        CloudBankUtils cloudBankUtils { get; }
-    }
+    
 
-    class CloudBankUtils
+    class CloudBankUtils : IShowCoins, ISendAndRecieveStacks
     {
         //Fields
         private BankKeys keys;
@@ -23,11 +19,11 @@ namespace CloudCoinCsharpSDK
         private HttpClient cli;
         private string receiptNumber;
         private int totalCoinsWithdrawn;
-        public int onesInBank;
-        public int fivesInBank;
-        public int twentyFivesInBank;
-        public int hundresInBank;
-        public int twohundredfiftiesInBank;
+        public int onesInBank { get; private set; }
+        public int fivesInBank { get; private set; }
+        public int twentyFivesInBank { get; private set; }
+        public int hundresInBank { get; private set; }
+        public int twohundredfiftiesInBank { get; private set; }
 
 
         //Constructor
@@ -76,10 +72,10 @@ namespace CloudCoinCsharpSDK
         }//end show coins
 
 
-        public void loadStackFromFile(string filename)
+        public void loadStackFromFile(string filepath)
         {
             //rawStackForDeposit = ReadFile( filename);
-            rawStackForDeposit = File.ReadAllText(filename);
+            rawStackForDeposit = File.ReadAllText(filepath);
         }
 
         public async Task sendStackToCloudBank( string toPublicURL)
