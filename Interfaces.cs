@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CloudCoinCsharpSDK
 {
-    interface IAccessCloudBank
+    interface ICloudBankAccessable
     {
         BankKeys LoadKeysFromFile(string filepath);
         CloudBankUtils CloudBankUtils { get; }
     }
 
-    interface IShowCoins
+    interface ICloudBankUtils
     {
         int onesInBank { get; }
         int fivesInBank { get; }
@@ -20,14 +20,15 @@ namespace CloudCoinCsharpSDK
         int hundresInBank { get; }
         int twohundredfiftiesInBank { get; }
         Task showCoins();
-    }
-
-    interface ISendAndRecieveStacks
-    {
         void loadStackFromFile(string filepath);
         void saveStackToFile(string filepath);
         string getStackName();
         Task sendStackToCloudBank(string toPublicUrl);
         Task getStackFromCloudBank(int amountToWithdraw);
+        Task getReceipt(string toPublicURL);
+        Task getReceiptFromCloudBank(string toPublicURL);
+        Task transferCloudCoins(string toPublicKey, int coinsToSend);
     }
+
+    
 }
