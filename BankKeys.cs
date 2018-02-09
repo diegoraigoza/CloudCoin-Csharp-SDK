@@ -12,7 +12,7 @@ namespace CloudCoinCsharpSDK
          }
          */
 
-    public class BankKeys
+    public class BankKeys : IKeys
     {
         //Fields
         [JsonProperty("publickey")]

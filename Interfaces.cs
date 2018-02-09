@@ -30,5 +30,14 @@ namespace CloudCoinCsharpSDK
         Task transferCloudCoins(string toPublicKey, int coinsToSend);
     }
 
+    interface IKeys
+    {
+        string publickey { get; set; }
+
+        string privatekey { get; set; }
+
+        string email { get; set; }
+    }
+
     
 }
