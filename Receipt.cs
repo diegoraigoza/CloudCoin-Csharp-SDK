@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace CloudCoinCsharpSDK
 {
-    public class Receipt
+    public class Receipt : IBankResponse
     {
         [JsonProperty("receipt_id")]
         public string receipt_id { get; set; }
@@ -27,7 +27,7 @@ namespace CloudCoinCsharpSDK
         [JsonProperty("total_lost")]
         public int total_lost { get; set; }
 
-        [JsonProperty("receipt")]
+        [JsonProperty("receipt_detail")]
         public ReceiptDetail[] rd { get; set; }
 
     }

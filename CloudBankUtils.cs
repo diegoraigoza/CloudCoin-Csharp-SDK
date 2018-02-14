@@ -97,10 +97,10 @@ namespace CloudCoinCsharpSDK
             }
 
             Console.Out.WriteLine("CloudBank Response: " + CloudBankFeedback);
-            var cbf = JsonConvert.DeserializeObject<Dictionary<string, string>>(CloudBankFeedback);
+            var cbf = JsonConvert.DeserializeObject<DepositResponse>(CloudBankFeedback);
             //rawReceipt = cbf["receipt"];
             //receiptNumber = cbf["rn"];
-            receiptNumber = cbf["receipt"];
+            receiptNumber = cbf.receipt;
             //Console.Out.WriteLine("Raw Receipt: " + rawReceipt);
         }//End send stack
 

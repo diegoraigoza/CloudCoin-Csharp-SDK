@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CloudCoinCsharpSDK
 {
     interface ICloudBankAccessable
@@ -39,5 +40,12 @@ namespace CloudCoinCsharpSDK
         string email { get; set; }
     }
 
-    
+    interface IBankResponse
+    {
+        string bank_server { get; set; }
+        string time { get; set; }
+    }
+
+
+
 }
