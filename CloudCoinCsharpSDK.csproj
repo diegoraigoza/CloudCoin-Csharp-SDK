@@ -91,6 +91,9 @@
     <Compile Include="BankKeys.cs" />
     <Compile Include="BankTotal.cs" />
     <Compile Include="CloudBankUtils.cs" />
+    <Compile Include="DepositResponse.cs" />
+    <Compile Include="FailResponse.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="ReceiptDetail.cs" />
   </ItemGroup>
