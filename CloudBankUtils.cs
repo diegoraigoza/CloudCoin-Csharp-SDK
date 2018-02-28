@@ -43,7 +43,6 @@ namespace CloudCoinCsharpSDK
         //Methods
         public async Task showCoins()
         {
-            Console.Out.WriteLine("https://" + keys.publickey + "/show_coins?k=" + keys.privatekey);
             var formContent = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("pk", keys.privatekey) });
             string json = "error";
             try
@@ -94,8 +93,6 @@ namespace CloudCoinCsharpSDK
         {
             string CloudBankFeedback = "";
             var formContent = new FormUrlEncodedContent(new[] { new KeyValuePair<string, string>("stack", rawStackForDeposit) });
-            Console.Out.WriteLine("CloudBank request: " + toPublicURL + "/deposit_one_stack");
-            Console.Out.WriteLine("Stack File: " + rawStackForDeposit);
             try
             {
                 var result_stack = await cli.PostAsync("https://"+toPublicURL + "/deposit_one_stack.aspx", formContent);
@@ -128,7 +125,6 @@ namespace CloudCoinCsharpSDK
 
         public async Task getReceipt(string toPublicURL)
         {
-            Console.Out.WriteLine("Geting Receipt: " + "https://" + toPublicURL + "/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
             try
             {
                 var result_receipt = await cli.GetAsync("https://" + toPublicURL + "/" + keys.privatekey + "/Receipts/" + receiptNumber + ".json");
