@@ -9,7 +9,7 @@ namespace CloudCoinCsharpSDK
 {
     
 
-    class CloudBankUtils : ICloudBankUtils
+    public class CloudBankUtils : ICloudBankUtils
     {
         //Fields
         private BankKeys keys;
