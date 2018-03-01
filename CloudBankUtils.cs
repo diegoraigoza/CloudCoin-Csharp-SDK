@@ -263,8 +263,9 @@ namespace CloudCoinCsharpSDK
 
         }
 
-        public string interpretReceipt()
+        public Interpretation interpretReceipt()
         {
+            Interpretation inter = new Interpretation();
             string interpretation = "";
             try
             {
@@ -276,6 +277,10 @@ namespace CloudCoinCsharpSDK
                     if (deserialReceipt.rd[i].status == "authentic")
                         totalCoins += getDenomination(deserialReceipt.rd[i].sn);
                 interpretation = "receipt number: " + deserialReceipt.receipt_id + " total authentic notes: " + totalNotes + " total authentic coins: " + totalCoins;
+                inter.interpretation = interpretation;
+                inter.receipt = deserialReceipt;
+                inter.totalAuthenticCoins = totalCoins;
+                inter.totalAuthenticNotes = totalNotes;
 
             }catch(JsonSerializationException ex)
             {
@@ -288,7 +293,7 @@ namespace CloudCoinCsharpSDK
                 interpretation = rawReceipt;
             }
            
-            return interpretation;
+            return inter;
         }
 
         public void saveStackToFile(string path)
