@@ -18,7 +18,7 @@ namespace CloudCoinCsharpSDK
         int onesInBank { get; }
         int fivesInBank { get; }
         int twentyFivesInBank { get; }
-        int hundresInBank { get; }
+        int hundredsInBank { get; }
         int twohundredfiftiesInBank { get; }
         Task showCoins();
         void loadStackFromFile(string filepath);

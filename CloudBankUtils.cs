@@ -22,7 +22,7 @@ namespace CloudCoinCsharpSDK
         public int onesInBank { get; private set; }
         public int fivesInBank { get; private set; }
         public int twentyFivesInBank { get; private set; }
-        public int hundresInBank { get; private set; }
+        public int hundredsInBank { get; private set; }
         public int twohundredfiftiesInBank { get; private set; }
 
 
@@ -35,7 +35,7 @@ namespace CloudCoinCsharpSDK
             onesInBank = 0;
             fivesInBank = 0;
             twentyFivesInBank = 0;
-            hundresInBank = 0;
+            hundredsInBank = 0;
             twohundredfiftiesInBank = 0;
         }//end constructor
 
@@ -55,7 +55,7 @@ namespace CloudCoinCsharpSDK
                     onesInBank = bankTotals.ones;
                     fivesInBank = bankTotals.fives;
                     twentyFivesInBank = bankTotals.twentyfives;
-                    hundresInBank = bankTotals.hundreds;
+                    hundredsInBank = bankTotals.hundreds;
                     twohundredfiftiesInBank = bankTotals.twohundredfifties;
                 }
                 else

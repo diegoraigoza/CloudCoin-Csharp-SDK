@@ -94,6 +94,7 @@
     <Compile Include="DepositResponse.cs" />
     <Compile Include="FailResponse.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="Interpretation.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="ReceiptDetail.cs" />
   </ItemGroup>
