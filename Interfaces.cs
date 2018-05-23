@@ -24,10 +24,10 @@ namespace CloudCoinCsharpSDK
         void loadStackFromFile(string filepath);
         void saveStackToFile(string filepath);
         string getStackName();
-        Task sendStackToCloudBank(string toPublicUrl);
+        Task sendStackToCloudBank();
         Task getStackFromCloudBank(int amountToWithdraw);
-        Task getReceipt(string toPublicURL);
-        Task getReceiptFromCloudBank(string toPublicURL);
+        Task getReceipt();
+        Task getReceiptFromCloudBank();
         Task transferCloudCoins(string toPublicKey, int coinsToSend);
     }
 
